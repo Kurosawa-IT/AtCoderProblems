@@ -6,17 +6,25 @@ int main()
     int n, m;
     cin >> n >> m;
 
-    vector<vector<int>> g(n);
+    set<pair<int, int>> s;
 
-    for (int i = 0; i < m; i++) {
+    for (int i = 0; i < m; i++)
+    {
         int u, v;
         cin >> u >> v;
-        u--;
-        v--;
-        g[u].push_back(v);
-        g[v].push_back(u);
+
+        if (u == v)
+        {
+            continue;
+        }
+        if (u > v)
+        {
+            swap(u, v);
+        }
+        s.insert(make_pair(u, v));
     }
 
+    cout << m - s.size() << endl;
 
     return 0;
 }
